@@ -2,7 +2,7 @@
 name: criativo-imagem
 description: Use SEMPRE que o usuário pedir para gerar, criar ou fazer uma imagem, criativo, anúncio, banner, thumbnail, capa, post ou arte — especialmente quando o pedido for curto e vago ("gera uma imagem de X", "faz um criativo de Y", "cria um anúncio falando Z"). Também use para lotes de criativos, variações de headline e adaptações de formato (feed, story, reels). Transforma briefs vagos em direção de arte completa antes de chamar qualquer modelo de imagem.
 metadata:
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Criativo de Imagem — Camada de Direção de Arte
@@ -82,12 +82,33 @@ modelos seguem direção de arte melhor em inglês e renderizam as strings liter
 
 Sempre `resolution: 2k`, depois reduza para o tamanho de entrega (1080x1080 etc).
 
-### 5. Gerar em lote e verificar
+### 5. Gerar e verificar
 
-- Gere **no mínimo 2 variações** por brief. Rodadas paralelas, não sequenciais.
+**Uma imagem por brief. Sempre `count: 1`.**
+Não gere variações da mesma coisa para o usuário escolher — isso desperdiça crédito e token.
+Confie na direção de arte: ela existe justamente para acertar de primeira.
+Só gere mais de uma imagem quando o usuário pedir explicitamente variações, ou quando o
+brief tiver N copies/ângulos diferentes — aí é **uma imagem por copy**, nunca duas da mesma.
+
+Se o resultado sair errado, **corrija e regere uma**, em vez de gerar várias e escolher.
+
 - **Sempre baixe e olhe o resultado** antes de entregar. Modelos erram acento e cortam texto.
   Não afirme que ficou correto sem ter visto.
-- Entregue com uma recomendação clara de qual usar e por quê — não um menu.
+- Em lote (10-20 imagens), monte um contact sheet em grade para revisar várias de uma vez
+  e só abra em tamanho cheio as suspeitas.
+
+### 6. Salvar
+
+**Um arquivo por imagem, sempre `.jpg`, qualidade 92.**
+
+Nunca salve o mesmo criativo em dois formatos. Nunca deixe o PNG original junto do JPG
+final — converta e apague o intermediário. Um criativo = um arquivo.
+
+JPG só não serve quando a imagem precisa de **fundo transparente** (logo, elemento
+recortado para composição). Nesse caso use PNG — e aí só o PNG, sem JPG junto.
+
+Nome do arquivo: descritivo e com a variação no nome (`coqueiro-dr-headline-verba.jpg`),
+não `imagem_1.jpg`.
 
 ## Antes de gerar
 
@@ -101,3 +122,5 @@ Se ele discordar, corrige antes de gastar crédito. Não peça aprovação de pr
 - Usar "flat vector", "modern", "clean design" como direção — não são direção, são vazio
 - Deixar a paleta em aberto
 - Entregar sem ter visto a imagem
+- **Gerar duas versões da mesma imagem** para o usuário escolher — `count: 1`, sempre
+- **Salvar o mesmo criativo em dois formatos** — JPG ou PNG, nunca os dois
